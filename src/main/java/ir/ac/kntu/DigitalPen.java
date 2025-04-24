@@ -41,15 +41,11 @@ public class DigitalPen {
 
     public String getDigitalPenValue() {
         if (brand == null) return "Unknown";
-        switch (brand.toLowerCase()) {
-            case "huion":
-                return "Fantastic";
-            case "xp pen":
-                return "Good";
-            case "ugee":
-                return "Normal";
-            default:
-                return "Bad";
-        }
+        return switch (brand.toLowerCase()) {
+            case "huion" -> "Fantastic";
+            case "xp pen" -> "Good";
+            case "ugee" -> "Normal";
+            default -> "Bad";
+        };
     }
 }
