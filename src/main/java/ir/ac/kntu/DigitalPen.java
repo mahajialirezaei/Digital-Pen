@@ -11,6 +11,9 @@ public class DigitalPen {
         this.fontsize = fontsize;
     }
 
+    public DigitalPen() {
+    }
+
     public String getBrand() {
         return brand;
     }
