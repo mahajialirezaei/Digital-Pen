@@ -1,46 +1,47 @@
 ## DIGITAL PEN
 
+### اهداف تمرین
 
-## اهداف تمرین
 - پیاده‌سازی فیلدهای **private** و دسترسی به آن‌ها از طریق **getter** و **setter**.
 - استفاده از **enum** برای تعیین رنگ قلم.
+- تعیین ارزش قلم نوری بر اساس برند.
 
+### مشخصات کلاس
 
-## مشخصات کلاس
+#### ۱. `Color` Enum
 
-### ۱. Color
-یک `enum` به نام `Color` تعریف کنید که شامل رنگ‌های زیر باشد:
+تعریف یک enum با مقادیر زیر:
+- `BLUE`
+- `RED`
+- `YELLOW`
+- `GREEN`
 
-- `BLUE` (آبی)
-- `RED` (قرمز)
-- `YELLOW` (زرد)
-- `GREEN` (سبز)
+#### ۲. کلاس `DigitalPen`
 
-### ۲. کلاس `DigitalPen`
-کلاس `DigitalPen` باید دارای فیلدهای زیر باشد:
+دارای فیلدهای خصوصی:
+- `Color color`
+- `int fontSize`
+- `String brand`
 
-| نوع داده | نام فیلد   | توضیح                         |
-|----------|------------|-------------------------------|
-| `Color`  | `color`    | رنگ قلم                       |
-| `int`    | `fontSize` | اندازه فونت                   |
-| `String` | `brand`    | برند قلم                      |
+و متدهای:
+- `getColor()` / `setColor(Color)`
+- `getFontSize()` / `setFontSize(int)`
+- `getBrand()` / `setBrand(String)`
+- `String getMoodMessage()` — خروجی بر اساس رنگ قلم (مثلاً: "It's BLUE")
+- `String getDigitalPenValue()` — خروجی بر اساس برند قلم:
 
-تمامی این فیلدها باید `private` باشند و برای هر کدام متدهای `getter` و `setter` نوشته شود.
+| برند      | پیام بازگشتی   |
+|-----------|----------------|
+| huion     | Fantastic      |
+| xp pen    | Good           |
+| ugee      | Normal         |
+| سایر برندها | Bad           |
 
-### ۳. متد پیام رنگ
-متدی به نام `String getMoodMessage()` در کلاس `DigitalPen` تعریف کنید که براساس رنگ فعلی قلم، یک پیام It's + Color را بازگرداند.  
+### مثال:
 
-
-| رنگ      | پیام برگشتی                                                |
-|-----------|-------------------------------------------------------------|
-| `BLUE`    | It's BLUE                               |
-| `RED`     | It's RED                       |
-| `YELLOW`  | It's YELLOW               |
-| `GREEN`   | It's GREEN                     |
-
-## مثال
 ```java
 DigitalPen pen = new DigitalPen();
 pen.setColor(Color.YELLOW);
-System.out.println(pen.getMoodMessage());
-```
+pen.setBrand("huion");
+System.out.println(pen.getMoodMessage());       // It's YELLOW
+System.out.println(pen.getDigitalPenValue());   // Fantastic
